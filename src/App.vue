@@ -13,8 +13,35 @@
 </template>
 
 <script>
+import { fetchGraphQLHelper } from '@/service/graphql';
+
+const launchesQuery = `
+  query launchesQuery ($limit: Int) {
+    launches(limit: $limit) {
+      details
+      mission_name
+      launch_date_local
+      rocket {
+        rocket_name
+      }
+      links {
+        mission_patch_small
+      }
+    }
+  }
+`;
 export default {
   name: 'App',
   components: {},
+  data() {
+    return {
+      launches: [],
+    };
+  },
+  async created() {
+    const { data } = await fetchGraphQLHelper(launchesQuery, { limit: 5 });
+    this.launches = data.launches;
+    console.log(this.launches);
+  },
 };
 </script>
