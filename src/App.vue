@@ -8,12 +8,17 @@
       <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-main> </v-main>
+    <v-main>
+      <v-timeline>
+        <TimeLineItem v-for="(launch, n) in launchesList" :key="n" :launch="launch" />
+      </v-timeline>
+    </v-main>
   </v-app>
 </template>
 
 <script>
 import { fetchGraphQLHelper } from '@/service/graphql';
+import TimeLineItem from './components/TimeLineItem';
 
 const launchesQuery = `
   query launchesQuery ($limit: Int) {
@@ -32,16 +37,20 @@ const launchesQuery = `
 `;
 export default {
   name: 'App',
-  components: {},
+  components: { TimeLineItem },
   data() {
     return {
       launches: [],
     };
   },
+  computed: {
+    launchesList() {
+      return this.launches.filter(launch => launch.details);
+    },
+  },
   async created() {
     const { data } = await fetchGraphQLHelper(launchesQuery, { limit: 5 });
     this.launches = data.launches;
-    console.log(this.launches);
   },
 };
 </script>
