@@ -1,28 +1,30 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <h2>SpaceX Timeline</h2>
-      </div>
+  <Stars>
+    <v-app>
+      <v-app-bar app color="primary" dark>
+        <div class="d-flex align-center">
+          <h2>SpaceX Timeline</h2>
+        </div>
 
-      <v-spacer></v-spacer>
-    </v-app-bar>
+        <v-spacer></v-spacer>
+      </v-app-bar>
 
-    <v-main>
-      <v-timeline>
-        <TimeLineItem v-for="(launch, n) in launchesList" :key="n" :launch="launch" />
-      </v-timeline>
-    </v-main>
+      <v-main>
+        <v-timeline>
+          <TimeLineItem v-for="(launch, n) in launchesList" :key="n" :launch="launch" />
+        </v-timeline>
+      </v-main>
 
-    <v-overlay :value="loading">
-      <v-progress-circular indeterminate size="64" color="primary" />
-    </v-overlay>
-  </v-app>
+      <v-overlay :value="loading">
+        <v-progress-circular indeterminate size="64" color="primary" />
+      </v-overlay> </v-app
+  ></Stars>
 </template>
 
 <script>
 import { fetchGraphQLHelper } from '@/service/graphql';
 import TimeLineItem from './components/TimeLineItem';
+import Stars from './views/Stars';
 
 const launchesQuery = `
   query launchesQuery ($limit: Int, $offset: Int, $order: String, $sort: String) {
@@ -44,7 +46,7 @@ const launchesQuery = `
 `;
 export default {
   name: 'App',
-  components: { TimeLineItem },
+  components: { TimeLineItem, Stars },
   data() {
     return {
       loading: true,
