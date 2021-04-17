@@ -7,7 +7,7 @@
       />
     </template>
     <template v-slot:opposite>
-      <span>{{ launch.launch_date_local | formatDate }}</span>
+      <span class="opposite">{{ launch.launch_date_local | formatDate }}</span>
     </template>
     <v-card class="elevation-2">
       <v-card-title class="headline"> MISSION: {{ launch.mission_name }} </v-card-title>
@@ -51,3 +51,9 @@ export default {
   },
 };
 </script>
+<style>
+.opposite {
+  color: #fff;
+  font-weight: bold;
+}
+</style>
