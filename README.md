@@ -1,24 +1,11 @@
-# spacex-frontend
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ellyofreitas/spacex-frontend/master/content/logo.gif">
+</p>
 
-## Project setup
-```
-yarn install
-```
+<p align="center">
+  SpaceX Timeline
+</p>
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ellyofreitas/spacex-frontend/master/content/demo.png">
+</p>
